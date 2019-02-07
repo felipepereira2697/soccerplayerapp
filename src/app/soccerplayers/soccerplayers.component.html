@@ -1,16 +1,19 @@
 <div class="soccerplayerContainer">
-  
+  <!--[(ngModel)] is a diretive and is Angular's two-way data binding syntax. so the data flows to the property to the textbox and from the textbox to the property -->
   <!--Pipes are a good way to format strings-->
-  
-  <h2>{{soccerplayer.name | uppercase}} Details</h2>
+  <!--The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.-->
+  <h2>My Players</h2>
+  <ul>
+    <li *ngFor="let soccerplayer of soccerplayers"> 
+      <p><span class="badge">{{soccerplayer.id}}</span> {{soccerplayer.name}} | {{soccerplayer.fullName}} | Shirt: {{soccerplayer.favoriteShirtNumber}}</p>
+    </li>
+  </ul>
 
-  <div><span>Id: </span>{{soccerplayer.id}}</div>
-  <div><span>Full Name: </span>{{soccerplayer.fullName}}</div>
-  <div><span>Shirt Number: </span>{{soccerplayer.favoriteShirtNumber}}</div>
   
-  <label>
-    <!--[(ngModel)] is a diretive and is Angular's two-way data binding syntax. so the data flows to the property to the textbox and from the textbox to the property -->
-    Name: <input [(ngModel)] = "soccerplayer.name" placeholder="Soccer Player Name"/>
-  </label>
+  
+  
+  
+  
+  
 </div>
 
