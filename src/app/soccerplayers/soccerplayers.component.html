@@ -1,6 +1,16 @@
-<h2>{{soccerplayer.name}} Details</h2>
+<div class="soccerplayerContainer">
+  
+  <!--Pipes are a good way to format strings-->
+  
+  <h2>{{soccerplayer.name | uppercase}} Details</h2>
 
-<div><span>Id:</span>{{soccerplayer.id}}</div>
-<div><span>Id:</span>{{soccerplayer.fullName}}</div>
-<div><span>Shirt Number:</span>{{soccerplayer.favoriteShirtNumber}}</div>
+  <div><span>Id: </span>{{soccerplayer.id}}</div>
+  <div><span>Full Name: </span>{{soccerplayer.fullName}}</div>
+  <div><span>Shirt Number: </span>{{soccerplayer.favoriteShirtNumber}}</div>
+  
+  <label>
+    <!--[(ngModel)] is a diretive and is Angular's two-way data binding syntax. so the data flows to the property to the textbox and from the textbox to the property -->
+    Name: <input [(ngModel)] = "soccerplayer.name" placeholder="Soccer Player Name"/>
+  </label>
+</div>
 
