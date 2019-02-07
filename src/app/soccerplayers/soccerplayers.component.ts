@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PLAYERS } from '../mock-players';
 import {Soccerplayer} from '../soccerplayer';
 //@Component is a decorator function that specifies the Angular metadata for the component.
 @Component({
@@ -8,12 +9,8 @@ import {Soccerplayer} from '../soccerplayer';
 })
 export class SoccerplayersComponent implements OnInit {
 
-  soccerplayer: Soccerplayer = {
-    id: 1,
-    name: 'Cruijff',
-    fullName: 'Hendrik Johannes Cruijff',
-    favoriteShirtNumber :14
-  }
+  //Instantiating a Soccerplayer object here
+  soccerplayers = PLAYERS;
   constructor() { }
 
   ngOnInit() {
