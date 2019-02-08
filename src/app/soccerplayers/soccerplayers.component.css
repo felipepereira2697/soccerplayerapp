@@ -1,4 +1,8 @@
-
+.soccerplayerContainer
+{
+    width: 50%;
+    
+}
 /* SoccerPlayers's private CSS styles */
 .selected 
 {
@@ -41,8 +45,9 @@
     background-color: #607D8B;
     height: 25px;
     width: 25px;
-    
+    padding: 8px 4px 0px 4px;
     margin: 5px 10px 5px 10px;
     text-align: center;
     border-radius: 50%;
 }
+
