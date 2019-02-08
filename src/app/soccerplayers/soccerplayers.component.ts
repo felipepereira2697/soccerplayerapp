@@ -8,11 +8,16 @@ import {Soccerplayer} from '../soccerplayer';
   styleUrls: ['./soccerplayers.component.css']
 })
 export class SoccerplayersComponent implements OnInit {
-
+  //Property to bind the selected soccer player
+  selectedSoccerPlayer: Soccerplayer;
   //Instantiating a Soccerplayer object here
   soccerplayers = PLAYERS;
   constructor() { }
 
+  onSelect(soccerplayer: Soccerplayer): void
+  {
+    this.selectedSoccerPlayer = soccerplayer;
+  }
   ngOnInit() {
   }
 
