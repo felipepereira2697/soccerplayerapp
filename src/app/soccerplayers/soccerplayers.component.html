@@ -1,22 +1,23 @@
-<div class="soccerplayerContainer">
-  <!--[(ngModel)] is a diretive and is Angular's two-way data binding syntax. so the data flows to the property to the textbox and from the textbox to the property -->
-  <!--Pipes | are a good way to format strings-->
-  <!--The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.-->
-  <!--[class.selected]="soccerplayer === selectedSoccerPlayer" this is a way to add or remove class conditionally-->
-  <h2>My Players</h2>
-  <ul class="players">
-    <li *ngFor="let soccerplayer of soccerplayers" (click) = "onSelect(soccerplayer)" class="selected" [class.selected]="soccerplayer === selectedSoccerPlayer"> 
-      <p><span class="badge">{{soccerplayer.id}}</span> {{soccerplayer.name}} | {{soccerplayer.fullName}} | Shirt: {{soccerplayer.favoriteShirtNumber}}</p>
-    </li>
-  </ul>  
-</div>
-
-<div *ngIf="selectedSoccerPlayer" class="inputSoccerPlayerName">
-  <h2>{{selectedSoccerPlayer.name | uppercase}}</h2>
-  <div><span>Id: </span>{{selectedSoccerPlayer.id}}</div>
-  <div>
-    <label>Name: 
-      <input [(ngModel)]="selectedSoccerPlayer.name" placeholder="Name"/>
-    </label>
+  <div class="soccerplayerContainer">
+    <!--[(ngModel)] is a diretive and is Angular's two-way data binding syntax. so the data flows to the property to the textbox and from the textbox to the property -->
+    <!--Pipes | are a good way to format strings-->
+    <!--The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.-->
+    <!--[class.selected]="soccerplayer === selectedSoccerPlayer" this is a way to add or remove class conditionally-->
+    <h2>My Players</h2>
+    <ul class="players">
+      <li *ngFor="let soccerplayer of soccerplayers" (click) = "onSelect(soccerplayer)" class="selected" [class.selected]="soccerplayer === selectedSoccerPlayer"> 
+        <p><span class="badge">{{soccerplayer.id}}</span> {{soccerplayer.name}} | {{soccerplayer.fullName}} | Shirt: {{soccerplayer.favoriteShirtNumber}}</p>
+      </li>
+    </ul>  
   </div>
-</div>
+  
+  <div *ngIf="selectedSoccerPlayer" class="inputSoccerPlayerName">
+    <h2>{{selectedSoccerPlayer.name | uppercase}}</h2>
+    <div><span>Id: </span>{{selectedSoccerPlayer.id}}</div>
+    <div>
+      <label>Name: 
+        <input [(ngModel)]="selectedSoccerPlayer.name" placeholder="Name"/>
+      </label>
+    </div>
+  </div>
+  
