@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component';
 import { FormsModule } from '@angular/forms';
+import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SoccerplayersComponent
+    SoccerplayersComponent,
+    SoccerplayerDetailComponent
   ],
   imports: [
     BrowserModule,

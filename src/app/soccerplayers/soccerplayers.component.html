@@ -11,13 +11,4 @@
     </ul>  
   </div>
   
-  <div *ngIf="selectedSoccerPlayer" class="inputSoccerPlayerName">
-    <h2>{{selectedSoccerPlayer.name | uppercase}}</h2>
-    <div><span>Id: </span>{{selectedSoccerPlayer.id}}</div>
-    <div>
-      <label>Name: 
-        <input [(ngModel)]="selectedSoccerPlayer.name" placeholder="Name"/>
-      </label>
-    </div>
-  </div>
-  
+  <app-soccerplayer-detail [selectedSoccerPlayer] = "selectedSoccerPlayer"></app-soccerplayer-detail>
