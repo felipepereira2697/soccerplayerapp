@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component';
 import { FormsModule } from '@angular/forms';
 import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SoccerplayersComponent,
-    SoccerplayerDetailComponent
+    SoccerplayerDetailComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
