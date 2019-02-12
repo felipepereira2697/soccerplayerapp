@@ -46,4 +46,9 @@ export class SoccerplayerDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.soccerPlayerService.getSoccerPlayer(id).subscribe(selectedSoccerPlayer => this.selectedSoccerPlayer = selectedSoccerPlayer)
   }
+  goBack():void
+  {
+    //going back to the previous page
+    this.location.back();
+  }
 }
