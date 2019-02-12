@@ -27,4 +27,12 @@ export class SoccerplayerService {
     this.messageService.add('Soccerplayers Service says: Nice! Soccerplayers fetched');
     return of(PLAYERS);
   }
+
+  getSoccerPlayer(id: Number): Observable<Soccerplayer>
+  {
+    //returning the mock data
+    //After soccerplayers are fetched, send a message
+    this.messageService.add(`Soccerplayer Service: fetched soccerplayer id=${id}`);
+    return of(PLAYERS.find(soccerplayer => soccerplayer.id === id));
+  }
 }

@@ -5,10 +5,12 @@
     <!--[class.selected]="soccerplayer === selectedSoccerPlayer" this is a way to add or remove class conditionally-->
     <h2>My Players</h2>
     <ul class="players">
-      <li *ngFor="let soccerplayer of soccerplayers" (click) = "onSelect(soccerplayer)" class="selected" [class.selected]="soccerplayer === selectedSoccerPlayer"> 
-        <p><span class="badge">{{soccerplayer.id}}</span> {{soccerplayer.name}} | {{soccerplayer.fullName}} | Shirt: {{soccerplayer.favoriteShirtNumber}}</p>
+      <li *ngFor="let soccerplayer of soccerplayers"> 
+        <a routerLink="/detail/{{soccerplayer.id}}">
+          <p><span class="badge">{{soccerplayer.id}}</span> {{soccerplayer.name}} | {{soccerplayer.fullName}} | Shirt: {{soccerplayer.favoriteShirtNumber}}</p>
+        </a>
       </li>
     </ul>  
   </div>
   
-  <app-soccerplayer-detail [selectedSoccerPlayer] = "selectedSoccerPlayer"></app-soccerplayer-detail>
+  

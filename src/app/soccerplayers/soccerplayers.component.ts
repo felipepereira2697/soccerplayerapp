@@ -9,7 +9,7 @@ import {Soccerplayer} from '../soccerplayer';
 })
 export class SoccerplayersComponent implements OnInit {
   //Property to bind the selected soccer player
-  selectedSoccerPlayer: Soccerplayer;
+  //selectedSoccerPlayer: Soccerplayer;
   //Instantiating a Soccerplayer object here
   soccerplayers: Soccerplayer[];
 
@@ -30,14 +30,19 @@ export class SoccerplayersComponent implements OnInit {
     this.soccerPlayerService.getSoccerPlayers()
                   .subscribe(soccerplayers => this.soccerplayers = soccerplayers);
   }
-  onSelect(soccerplayer: Soccerplayer): void
-  {
-    this.selectedSoccerPlayer = soccerplayer;
-  }
+
   ngOnInit() 
   {
     //only called after constructing a soccerplayer component instance
     this.getSoccerPlayer();
   }
+  /*
+  As we are using router there is no sense to keep the onselect method anymore
+  onSelect(soccerplayer: Soccerplayer): void
+  {
+    this.selectedSoccerPlayer = soccerplayer;
+  }
+  */
+
 
 }
