@@ -5,12 +5,16 @@
         <title>Soccerplayer DB</title>
     </head>
     <body>
-            
+        <!--The component name is the same as @Component -->    
         <!-- interpolation binding syntax using {{}}.-->
         <h1>Hey! Welcome to <span class="mainTitle">{{title}}</span> </h1>
+        <nav>
+            <!--This link must have the EXACTLY SAME name that was defined in app-routing.module.ts -->
+            <a routerLink="/soccerplayers">Soccerplayers</a>
+        </nav>
         <app-messages></app-messages>
-        <!--The component name is the same as @Component -->
-        <app-soccerplayers></app-soccerplayers>
+        <!--The <router-outlet> tells the router where to display routed views. This guy knows all the routes-->
+        <router-outlet></router-outlet>
         
     </body>
 </html>
