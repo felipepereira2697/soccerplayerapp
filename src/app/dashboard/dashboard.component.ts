@@ -22,6 +22,6 @@ export class DashboardComponent implements OnInit {
   getSoccerplayers(): void
   {
     //bring a random list to top players
-    this.soccerplayerService.getSoccerPlayers().subscribe(soccerplayers => this.soccerplayers = soccerplayers.slice(1,5));
+    this.soccerplayerService.getSoccerPlayers().subscribe(soccerplayers => this.soccerplayers = soccerplayers.slice(0,4));
   }
 }
