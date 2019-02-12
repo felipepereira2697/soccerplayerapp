@@ -1,0 +1,10 @@
+<h3>
+  Top Players
+</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let soccerplayer of soccerplayers" class="col-1-4">
+    <div class="module soccerplayer">
+      <h4>{{soccerplayer.name}}</h4>
+    </div>
+  </a>
+</div>

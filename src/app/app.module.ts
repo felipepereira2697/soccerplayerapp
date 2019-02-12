@@ -7,13 +7,15 @@ import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component'
 import { FormsModule } from '@angular/forms';
 import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
 import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SoccerplayersComponent,
     SoccerplayerDetailComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
