@@ -1,6 +1,6 @@
 export class Soccerplayer 
 {
-    id: Number;
+    id: number;
     name: string;
     fullName: string;
     favoriteShirtNumber: Number;

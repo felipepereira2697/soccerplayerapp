@@ -33,8 +33,10 @@ export class SoccerplayerDetailComponent implements OnInit {
   OBS: injetando atributos/propriedades de um componente pai pra um componente filho
   */
   @Input() selectedSoccerPlayer: Soccerplayer;
-  constructor(private route: ActivatedRoute, private soccerPlayerService: SoccerplayerService, private location: Location) { }
+  constructor(private route: ActivatedRoute, private soccerPlayerService: SoccerplayerService, private location: Location) 
+  {
 
+  }
   ngOnInit(): void 
   {
     this.getSoccerplayer();
@@ -44,7 +46,8 @@ export class SoccerplayerDetailComponent implements OnInit {
   {
     //Extracting the id from the url route
     const id = +this.route.snapshot.paramMap.get('id');
-    this.soccerPlayerService.getSoccerPlayer(id).subscribe(selectedSoccerPlayer => this.selectedSoccerPlayer = selectedSoccerPlayer)
+    this.soccerPlayerService.getSoccerPlayer(id)
+    .subscribe(selectedSoccerPlayer => this.selectedSoccerPlayer = selectedSoccerPlayer)
   }
   goBack():void
   {
