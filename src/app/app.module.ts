@@ -1,38 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule }       from '@angular/core';
+import { BrowserModule }  from '@angular/platform-browser';
+import { FormsModule }    from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component';
-import { FormsModule } from '@angular/forms';
-import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
-import { MessagesComponent } from './messages/messages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-//To make Http Client Module available everywhere in the module
-import { HttpClientModule } from '@angular/common/http';
-
-//After install in-memory-web-api 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+import { InMemoryDataService }  from './in-memory-data.service';
+
+import { AppRoutingModule }     from './app-routing.module';
+
+import { AppComponent }         from './app.component';
+import { DashboardComponent }   from './dashboard/dashboard.component';
+import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component';
+
+import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
+import { MessagesComponent }    from './messages/messages.component';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    SoccerplayersComponent,
-    SoccerplayerDetailComponent,
-    MessagesComponent,
-    DashboardComponent, 
-    //Add HttpClientModule here
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
     HttpClientModule,
+    
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    SoccerplayersComponent,
+    SoccerplayerDetailComponent,
+    MessagesComponent,
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
