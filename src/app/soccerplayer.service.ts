@@ -4,6 +4,7 @@ import { PLAYERS } from './mock-players';
 import { Observable, of} from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 /*
   The soccerplayer.service could get hero data from anywhere—a web service, local storage, or a mock data source.
 
@@ -23,7 +24,19 @@ export class SoccerplayerService {
   { 
 
   }
-
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+   
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+   
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+   
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
   private log(message: string) 
   {
     this.messageService.add(`Soccerplayer service: ${message}`);
@@ -35,14 +48,23 @@ export class SoccerplayerService {
     //After soccerplayers are fetched, send a message
     this.messageService.add('Soccerplayers Service says: Nice! Soccerplayers fetched');
     //return of(PLAYERS);
-    return this.http.get<Soccerplayer[]>(this.soccerplayersUrl);
+    //All HttpClient methods return an RxJS Observable of something.
+    return this.http.get<Soccerplayer[]>(this.soccerplayersUrl).pipe(
+      tap(_ => this.log('fetched soccerplayers')),
+      catchError(this.handleError('getSoccerplayers', []))
+    );
   }
 
   getSoccerPlayer(id: Number): Observable<Soccerplayer>
   {
     //returning the mock data
     //After soccerplayers are fetched, send a message
+    const url = `${this.soccerplayersUrl}/${id}`;
     this.messageService.add(`Soccerplayer Service: fetched soccerplayer id=${id}`);
-    return of(PLAYERS.find(soccerplayer => soccerplayer.id === id));
+    //return of(PLAYERS.find(soccerplayer => soccerplayer.id === id));
+    return this.http.get<Soccerplayer>(url).pipe(
+      tap(_ => this.log(`fetched soccerplayer id=${id}`)),
+      catchError(this.handleError<Soccerplayer>(`getSoccerplayer id=${id}`))
+    );
   }
 }
