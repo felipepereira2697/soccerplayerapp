@@ -90,9 +90,9 @@ export class SoccerplayerService {
     );
   }
   
-  deleteSoccerplayer (hero: Soccerplayer | number): Observable<Soccerplayer> 
+  deleteSoccerplayer (soccerplayer: Soccerplayer | number): Observable<Soccerplayer> 
   {
-    const id = typeof hero === 'number' ? hero : hero.id;
+    const id = typeof soccerplayer === 'number' ? soccerplayer : soccerplayer.id;
     const url = `${this.soccerplayersUrl}/${id}`;
 
     return this.http.delete<Soccerplayer>(url, httpOptions).pipe(
