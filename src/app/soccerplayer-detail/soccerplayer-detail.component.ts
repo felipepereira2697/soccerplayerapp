@@ -54,4 +54,9 @@ export class SoccerplayerDetailComponent implements OnInit {
     //going back to the previous page
     this.location.back();
   }
+
+  save(): void
+  {
+    this.soccerPlayerService.updateHero(this.selectedSoccerPlayer).subscribe(() => this.goBack());
+  }
 }

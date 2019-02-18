@@ -5,6 +5,10 @@ import { Observable, of} from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 /*
   The soccerplayer.service could get hero data from anywhere—a web service, local storage, or a mock data source.
 
@@ -14,12 +18,14 @@ service will provide an injectable service */
 @Injectable({
   providedIn: 'root'
 })
+
 export class SoccerplayerService {
   private soccerplayersUrl = 'api/soccerplayers';  // URL to web api
   /*
     Here we have a typical service-in-service scenario, so we inject message service into soccer player service that will
     be injected in soccerplayercomponent
   */
+  
   constructor(private http: HttpClient, private messageService: MessageService)
   { 
 
@@ -65,6 +71,13 @@ export class SoccerplayerService {
     return this.http.get<Soccerplayer>(url).pipe(
       tap(_ => this.log(`fetched soccerplayer id=${id}`)),
       catchError(this.handleError<Soccerplayer>(`getSoccerplayer id=${id}`))
+    );
+  }
+
+  updateHero (soccerplayer: Soccerplayer): Observable<any> {
+    return this.http.put(this.soccerplayersUrl, soccerplayer, httpOptions).pipe(
+      tap(_ => this.log(`updated soccerplayer id=${soccerplayer.id}`)),
+      catchError(this.handleError<any>('update soccerplayer'))
     );
   }
 }
