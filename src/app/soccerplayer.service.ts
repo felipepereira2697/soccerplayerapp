@@ -74,10 +74,18 @@ export class SoccerplayerService {
     );
   }
 
-  updateHero (soccerplayer: Soccerplayer): Observable<any> {
+  updateHero (soccerplayer: Soccerplayer): Observable<any> 
+  {
     return this.http.put(this.soccerplayersUrl, soccerplayer, httpOptions).pipe(
       tap(_ => this.log(`updated soccerplayer id=${soccerplayer.id}`)),
       catchError(this.handleError<any>('update soccerplayer'))
+    );
+  }
+
+  addSoccerplayer (soccerplayer: Soccerplayer): Observable<Soccerplayer> {
+    return this.http.post<Soccerplayer>(this.soccerplayersUrl, soccerplayer, httpOptions).pipe(
+      tap((newSoccerplayer: Soccerplayer) => this.log(`added soccerplayer w/ id=${newSoccerplayer.id}`)),
+      catchError(this.handleError<Soccerplayer>('addSoccerplayer'))
     );
   }
 }

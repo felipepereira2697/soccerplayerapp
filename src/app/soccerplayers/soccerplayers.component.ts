@@ -36,6 +36,14 @@ export class SoccerplayersComponent implements OnInit {
     //only called after constructing a soccerplayer component instance
     this.getSoccerPlayer();
   }
+
+  add(name: string): void
+  {
+    name = name.trim();
+    if(!name) {return; };
+    this.soccerPlayerService.addSoccerplayer({ name } as Soccerplayer).subscribe(soccerplayer => {this.soccerplayers.push(soccerplayer)});
+
+  }
   /*
   As we are using router there is no sense to keep the onselect method anymore
   onSelect(soccerplayer: Soccerplayer): void
