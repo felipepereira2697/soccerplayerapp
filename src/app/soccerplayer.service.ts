@@ -82,10 +82,22 @@ export class SoccerplayerService {
     );
   }
 
-  addSoccerplayer (soccerplayer: Soccerplayer): Observable<Soccerplayer> {
+  addSoccerplayer (soccerplayer: Soccerplayer): Observable<Soccerplayer> 
+  {
     return this.http.post<Soccerplayer>(this.soccerplayersUrl, soccerplayer, httpOptions).pipe(
       tap((newSoccerplayer: Soccerplayer) => this.log(`added soccerplayer w/ id=${newSoccerplayer.id}`)),
       catchError(this.handleError<Soccerplayer>('addSoccerplayer'))
+    );
+  }
+  
+  deleteSoccerplayer (hero: Soccerplayer | number): Observable<Soccerplayer> 
+  {
+    const id = typeof hero === 'number' ? hero : hero.id;
+    const url = `${this.soccerplayersUrl}/${id}`;
+
+    return this.http.delete<Soccerplayer>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted Soccerplayer id=${id}`)),
+      catchError(this.handleError<Soccerplayer>('deleteSoccerplayer'))
     );
   }
 }

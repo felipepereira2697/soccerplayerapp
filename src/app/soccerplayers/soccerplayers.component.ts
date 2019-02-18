@@ -44,6 +44,12 @@ export class SoccerplayersComponent implements OnInit {
     this.soccerPlayerService.addSoccerplayer({ name } as Soccerplayer).subscribe(soccerplayer => {this.soccerplayers.push(soccerplayer)});
 
   }
+
+  delete(socceplayer: Soccerplayer): void
+  {
+    this.soccerplayers = this.soccerplayers.filter(s => s != socceplayer);
+    this.soccerPlayerService.deleteSoccerplayer(socceplayer).subscribe();
+  }
   /*
   As we are using router there is no sense to keep the onselect method anymore
   onSelect(soccerplayer: Soccerplayer): void
