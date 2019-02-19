@@ -14,6 +14,7 @@ import { SoccerplayersComponent } from './soccerplayers/soccerplayers.component'
 
 import { SoccerplayerDetailComponent } from './soccerplayer-detail/soccerplayer-detail.component';
 import { MessagesComponent }    from './messages/messages.component';
+import { SoccerplayerSearchComponent } from './soccerplayer-search/soccerplayer-search.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { MessagesComponent }    from './messages/messages.component';
     SoccerplayersComponent,
     SoccerplayerDetailComponent,
     MessagesComponent,
+    SoccerplayerSearchComponent,
 
   ],
   bootstrap: [ AppComponent ]

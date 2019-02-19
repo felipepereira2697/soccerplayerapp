@@ -10,7 +10,7 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 /*
-  The soccerplayer.service could get hero data from anywhere—a web service, local storage, or a mock data source.
+  The soccerplayer.service could get soccerplayer data from anywhere—a web service, local storage, or a mock data source.
 
 */
 /* This @Injectable decorator says that the class participates in the dependency injection system, this Soccerplayer
@@ -74,7 +74,7 @@ export class SoccerplayerService {
     );
   }
 
-  updateHero (soccerplayer: Soccerplayer): Observable<any> 
+  updateSoccerplayer (soccerplayer: Soccerplayer): Observable<any> 
   {
     return this.http.put(this.soccerplayersUrl, soccerplayer, httpOptions).pipe(
       tap(_ => this.log(`updated soccerplayer id=${soccerplayer.id}`)),
@@ -98,6 +98,16 @@ export class SoccerplayerService {
     return this.http.delete<Soccerplayer>(url, httpOptions).pipe(
       tap(_ => this.log(`deleted Soccerplayer id=${id}`)),
       catchError(this.handleError<Soccerplayer>('deleteSoccerplayer'))
+    );
+  }
+  searchSoccerplayers(term: string): Observable<Soccerplayer[]> {
+    if (!term.trim()) {
+      
+      return of([]);
+    }
+    return this.http.get<Soccerplayer[]>(`${this.soccerplayersUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found soccerplayers matching "${term}"`)),
+      catchError(this.handleError<Soccerplayer[]>('search soccerplayers', []))
     );
   }
 }

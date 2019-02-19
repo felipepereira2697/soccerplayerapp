@@ -57,6 +57,6 @@ export class SoccerplayerDetailComponent implements OnInit {
 
   save(): void
   {
-    this.soccerPlayerService.updateHero(this.selectedSoccerPlayer).subscribe(() => this.goBack());
+    this.soccerPlayerService.updateSoccerplayer(this.selectedSoccerPlayer).subscribe(() => this.goBack());
   }
 }
